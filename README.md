@@ -5,7 +5,7 @@
 ### コンテナの立ち上げ
 
 ```bash
-git clone 
+git clone git@github.com:dikusy/linebot.git
 cd linebot/docker
 docker-compose up -d
 ```
