@@ -15,9 +15,9 @@ class Form extends CI_Controller {
             $this->load->view('form/index', $data);
             // $this->load->view('templates/footer');
     }
-    public function view($slug = NULL)
+    public function view($id = NULL)
     {
-        $data['store_item'] = $this->store_form->get_store($slug);
+        $data['store_item'] = $this->store_form->get_store($id);
     
         if (empty($data['store_item']))
         {
@@ -28,27 +28,28 @@ class Form extends CI_Controller {
         $this->load->view('form/view', $data);
         // $this->load->view('templates/footer');
     }
-    // public function create()
-    // {
-    //     $this->load->helper('form');
-    //     $this->load->library('form_validation');
+    public function create()
+    {
+        $this->load->helper('form');
+        $this->load->library('form_validation');
     
-    //     $data['title'] = 'Create a form item';
+        $data['title'] = 'Create a form item';
     
-    //     $this->form_validation->set_rules('name', 'Name', 'required');
-    //     $this->form_validation->set_rules('address', 'Address', 'required');
+        $this->form_validation->set_rules('name', 'Name', 'required');
+        $this->form_validation->set_rules('address', 'Address', 'required');
     
-    //     if ($this->form_validation->run() === FALSE)
-    //     {
-    //         // $this->load->view('templates/header', $data);
-    //         $this->load->view('form/create');
-    //         // $this->load->view('templates/footer');
-    
-    //     }
-    //     else
-    //     {
-    //         $this->store_form->set_store();
-    //         $this->load->view('news/success');
-    //     }
-    // }
+        if ($this->form_validation->run() === FALSE)
+        {
+            // $this->load->view('templates/header', $data);
+            $this->load->view('form/create');
+            // $this->load->view('templates/footer');
+        }
+        else
+        {
+            $this->store_form->set_store();
+
+            $data['store'] = $this->store_form->get_store();
+            $this->load->view('form/index', $data);
+        }
+    }
 }
