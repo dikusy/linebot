@@ -1,3 +1,6 @@
+
+<a class="info-btn" href="<?=$this->config->base_url()?>form/create" target="_parent">新規作成</a>
+
 <h2><?php echo $title; ?></h2>
 
 <?php foreach ($store as $store_item): ?>
@@ -6,6 +9,6 @@
         <div class="main">
                 <?php echo $store_item['address']; ?>
         </div>
-        <p><a href="<?php echo site_url('form/'.$store_item['slug']); ?>">View store</a></p>
+        <p><a href="<?=$this->config->base_url('form/'.$store_item['id']); ?>">View store</a></p>
 
 <?php endforeach; ?>
