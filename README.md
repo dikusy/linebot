@@ -7,6 +7,7 @@
 ```bash
 git clone git@github.com:dikusy/linebot.git
 cd linebot/docker
+docker-compose build
 docker-compose up -d
 ```
 
