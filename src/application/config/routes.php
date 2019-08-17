@@ -54,7 +54,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['form'] = 'form';
 $route['form/create'] = 'form/create';
 $route['form/(:any)'] = 'form/view/$1';
+$route[''] = '';
 
-$route['default_controller'] = 'form';
+$route['default_controller'] = 'linebot';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
