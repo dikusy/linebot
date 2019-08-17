@@ -9,8 +9,11 @@ class Linebot extends CI_Controller {
 
     public function index()
     {
-        require 'apiKey.php';
-        $accessToken = $line_bot_access_token;
+        require 'api_key.php';
+        require 'utils/send_message.php';
+        require 'utils/will_shown_text.php';
+
+        $accessToken = $LINE_BOT_ACCESS_TOKEN;
         //ユーザーからのメッセージ取得
         $json_string = file_get_contents('php://input');
         $json_object = json_decode($json_string);
@@ -65,71 +68,3 @@ class Linebot extends CI_Controller {
         }
     }
 }
-?>
-
-
-<?php
-//返信メッセージのテキスト取得
-function willShownText($key) {
-    $text = (object) array(
-        'selected_kind' => 
-        "選択ありがとうございます！
-
-食べたいもののジャンルを教えてください
-
-例) ランチ
-　  ディナー
-　  居酒屋      など",
-
-        'selected_food' => 
-        "選択ありがとうございます！
-
-食べたいものを教えてください
-
-例) ラーメン
-　  カレー
-　  うどん      など",
-
-        'selected_shop' => 
-    "選択ありがとうございます！
-
-お店の名前を教えてください
-
-例) ひらがなラーメン
-　  カタカナカレー
-　  漢字中華      など",
-
-        'selected_error' => "「ジャンル」、「店名」、「食べ物」のいずれかを入力してください。"
-    );
-        return $text->$key;
-    }
-
-    ?>
-
-
-    <?php
-    //メッセージの送信
-    function sending_messages($accessToken, $replyToken, $message_type, $return_message_text){
-        $response_format_text = [
-            "type" => $message_type,
-            "text" => $return_message_text
-        ];
-
-        $post_data = [
-            "replyToken" => $replyToken,
-            "messages" => [$response_format_text]
-        ];
-
-        $ch = curl_init("https://api.line.me/v2/bot/message/reply");
-        curl_setopt($ch, CURLOPT_POST, true);
-        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($post_data));
-        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-            'Content-Type: application/json; charser=UTF-8',
-            'Authorization: Bearer ' . $accessToken
-        ));
-        $result = curl_exec($ch);
-        curl_close($ch);
-    }
-?>
