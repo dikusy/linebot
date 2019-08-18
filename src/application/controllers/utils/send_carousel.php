@@ -10,7 +10,7 @@ function send_carousel($accessToken, $replyToken, $message_type, $message_text, 
 
 	$no_search_data_text = [
 		"type" => 'text',
-		'text' => '「'.$search_kind.'」が「'.$message_text.'」に該当する店舗はありませんでした。'
+		'text' => $search_kind.'が「'.$message_text.'」に該当する店舗はありませんでした。'
 	];
 
 	$response_format_text = [
@@ -71,8 +71,8 @@ function create_column($data) {
 			"thumbnailImageUrl" => "https://example.com/bot/images/item1.jpg",
 			"imageBackgroundColor" => "#FFFFFF",
 			"title" => $_data['name'],
-			"text" => '定休日: '.$_data['holiday'].'
-住所: '.$_data['address'].'
+			"text" => '営業時間: '.$_data['open_at'].' ~ '.$_data['close_at'].'
+定休日: '.$_data['holiday'].'
 予算: 昼 '.$_data['day_average'].'円, 夜 '.$_data['night_average'].'円',
 			"defaultAction" => [
 				"type" => "uri",
@@ -88,7 +88,7 @@ function create_column($data) {
 				[
 					"type" => "uri",
 					"label" => "マップ",
-					"uri" => 'https://www.google.com/maps?ll=43.062338,141.355623&z=17&t=m&hl=ja&gl=US&mapclient=embed&q=%E3%80%92060-0001+%E5%8C%97%E6%B5%B7%E9%81%93%E6%9C%AD%E5%B9%8C%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E5%8C%97%EF%BC%91%E6%9D%A1%E8%A5%BF%EF%BC%91%E4%B8%81%E7%9B%AE%EF%BC%96'
+					"uri" => 'https://www.google.com/maps/search/%E6%9D%B1%E4%BA%AC%E9%A7%85/@35.6808686,139.7658987,17z/data=!3m1!4b1?hl=ja'
 				],
 				[
 					"type" => "uri",
