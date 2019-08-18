@@ -60,17 +60,17 @@ class Linebot extends CI_Controller {
         // 検索内容
         } else if ($turn === 1) {
             $data = $this->store_form->get_by_key('category', $message_text);
-            send_carousel($accessToken, $replyToken, 'template', $message_text, $data);
+            send_carousel($accessToken, $replyToken, 'template', $message_text, 'ジャンル', $data);
             $turn = 0;
             $this->turn->set($user_id, $turn);
         } else if ($turn === 2) {
             $data = $this->store_form->get_by_key('category', $message_text);
-            send_carousel($accessToken, $replyToken, 'template', $message_text, $data);
+            send_carousel($accessToken, $replyToken, 'template', $message_text, '食べ物', $data);
             $turn = 0;
             $this->turn->set($user_id, $turn);
         } else if ($turn === 3) {
             $data = $this->store_form->get_by_key('name', $message_text);
-            send_carousel($accessToken, $replyToken, 'template', $message_text, $data);   
+            send_carousel($accessToken, $replyToken, 'template', $message_text, '店名', $data);   
             $turn = 0;
             $this->turn->set($user_id, $turn);
         }
