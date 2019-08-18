@@ -1,5 +1,5 @@
 <?php
-//メッセージの送信
+// メッセージの送信
 function sending_messages($accessToken, $replyToken, $message_type, $return_message_text){
     $response_format_text = [
         "type" => $message_type,

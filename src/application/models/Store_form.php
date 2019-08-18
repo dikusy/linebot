@@ -6,14 +6,14 @@ class Store_Form extends CI_Model {
     }
     public function get_store($id = FALSE)
     {
-            if ($id === FALSE)
-            {
-                    $query = $this->db->get('store');
-                    return $query->result_array();
-            }
-    
-            $query = $this->db->get_where('store', array('id' => $id));
-            return $query->row_array();
+        if ($id === FALSE)
+        {
+            $query = $this->db->get('store');
+            return $query->result_array();
+        }
+
+        $query = $this->db->get_where('store', array('id' => $id));
+        return $query->row_array();
     }
     public function set_store()
     {
@@ -36,5 +36,10 @@ class Store_Form extends CI_Model {
         );
     
         return $this->db->insert('store', $data);
+    }
+
+    public function get_by_key($key, $text) {
+        $query = $this->db->get_where('store', array($key => $text));
+        return $query->result_array();
     }
 }

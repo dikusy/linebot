@@ -1,6 +1,6 @@
 <?php
 //返信メッセージのテキスト取得
-function willShownText($key) {
+function will_shown_text($key) {
 	$text = (object) array(
 		'selected_kind' => 
 		"選択ありがとうございます！
