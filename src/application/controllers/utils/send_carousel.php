@@ -42,7 +42,9 @@ function create_column($data) {
 			"thumbnailImageUrl" => "https://example.com/bot/images/item1.jpg",
 			"imageBackgroundColor" => "#FFFFFF",
 			"title" => $_data['name'],
-			"text" => $_data['category'],
+			"text" => '定休日: '.$_data['holiday'].'
+住所: '.$_data['address'].'
+予算: 昼 '.$_data['day_average'].'円, 夜 '.$_data['night_average'].'円',
 			"defaultAction" => [
 				"type" => "uri",
 				"label" => "ホームページ",
