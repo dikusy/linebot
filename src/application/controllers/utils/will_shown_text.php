@@ -29,7 +29,7 @@ function will_shown_text($key) {
 　  カタカナカレー
 　  漢字中華      など",
 
-		'selected_error' => "「ジャンル」、「店名」、「食べ物」のいずれかを入力してください。"
+		'selected_error' => "「ジャンル」「店名」「食べ物」のいずれかを入力してください。"
 	);
 		return $text->$key;
 }

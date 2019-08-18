@@ -1,7 +1,12 @@
 <?php
 // カルーセルの送信
-function send_carousel($accessToken, $replyToken, $message_type, $show_data) {
+function send_carousel($accessToken, $replyToken, $message_type, $message_text, $show_data) {
 	$columns = create_column($show_data);
+
+	$what_search_text = [
+		"type" => 'text',
+		'text' => '「'.$message_text.'」の検索結果です。'
+	];
 
 	$response_format_text = [
 		"type" => "template",
@@ -14,9 +19,14 @@ function send_carousel($accessToken, $replyToken, $message_type, $show_data) {
 		]
 	];
 
+	$next_announce_text = [
+        "type" => 'text',
+        "text" => 'もう一度検索する場合は「ジャンル」「店名」「食べ物」から検索する項目を入力してください。'
+    ];
+
     $post_data = [
         "replyToken" => $replyToken,
-        "messages" => [$response_format_text]
+        "messages" => [$what_search_text, $response_format_text, $next_announce_text]
     ];
 
     $ch = curl_init("https://api.line.me/v2/bot/message/reply");
