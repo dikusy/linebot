@@ -23,7 +23,8 @@ class Turn extends CI_Model {
             'turn' => $turn,
         );
 		if ($query->row_array()) {
-			return $this->db->update('turn', $data);
+			$id = $query->row_array()['id'];
+			return $this->db->update('turn', $data, array('id' => $id));
 		} else {
 			return $this->db->insert('turn', $data);
 		}
