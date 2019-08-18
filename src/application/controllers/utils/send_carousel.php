@@ -73,7 +73,7 @@ function create_column($data) {
 			"title" => $_data['name'],
 			"text" => '営業時間: '.$_data['open_at'].'時 ~ '.$_data['close_at'].'時
 定休日: '.$_data['holiday'].'
-予算: 昼 '.$_data['day_average'].'円, 夜 '.$_data['night_average'].'円',
+予算: 昼 '.number_format($_data['day_average']).'円, 夜 '.number_format($_data['night_average']).'円',
 			"defaultAction" => [
 				"type" => "uri",
 				"label" => "ホームページ",
