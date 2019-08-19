@@ -6,6 +6,7 @@ class Form extends CI_Controller {
             $this->load->model('store_form');
             $this->load->helper('url_helper');
     }
+
     public function index()
     {
             $data['store'] = $this->store_form->get_store();
@@ -15,6 +16,7 @@ class Form extends CI_Controller {
             $this->load->view('form/index', $data);
             // $this->load->view('templates/footer');
     }
+
     public function view($id = NULL)
     {
         $data['store_item'] = $this->store_form->get_store($id);
@@ -28,6 +30,7 @@ class Form extends CI_Controller {
         $this->load->view('form/view', $data);
         // $this->load->view('templates/footer');
     }
+
     public function create()
     {
         $this->load->helper('form');
