@@ -33,7 +33,7 @@
     <input type="input" name="tel" /><br />
 
     <label for="name">img</label>
-    <input type="input" name="img" /><br />
+    <input type="file" name="img" size="20" /><br />
 
     <input type="submit" name="submit" value="Create store item" />
 
