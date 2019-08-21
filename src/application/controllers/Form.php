@@ -5,6 +5,8 @@ class Form extends CI_Controller {
             parent::__construct();
             $this->load->model('store_form');
             $this->load->helper('url_helper');
+            $this->load->helper(array('form', 'url'));
+
     }
 
     public function index()
@@ -33,19 +35,29 @@ class Form extends CI_Controller {
 
     public function create()
     {
+
+        $config['upload_path']          = './';
+        // $config['upload_path']          = './application/libraries/uploads/';
+        // $config['allowed_types']        = 'gif|jpg|png';
+        // $config['max_size']             = 100;
+        // $config['max_width']            = 1024;
+        // $config['max_height']           = 768;
+
+        $this->load->library('upload', $config);
+        $this->upload->do_upload('img');
+
+
         $this->load->helper('form');
         $this->load->library('form_validation');
     
         $data['title'] = 'Create a form item';
     
-        $this->form_validation->set_rules('name', 'Name', 'required');
-        $this->form_validation->set_rules('address', 'Address', 'required');
-    
+        // $this->form_validation->set_rules('name', 'Name', 'required');
+        // $this->form_validation->set_rules('address', 'Address', 'required');
+
         if ($this->form_validation->run() === FALSE)
         {
-            // $this->load->view('templates/header', $data);
             $this->load->view('form/create');
-            // $this->load->view('templates/footer');
         }
         else
         {

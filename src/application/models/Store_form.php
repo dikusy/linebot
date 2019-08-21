@@ -5,6 +5,7 @@ class Store_Form extends CI_Model {
         parent::__construct();
         $this->load->helper(array('form', 'url'));
         $this->load->database();
+
     }
     public function get_store($id = FALSE)
     {
@@ -19,26 +20,20 @@ class Store_Form extends CI_Model {
     }
     public function set_store()
     {
-        $config['upload_path']          = './libraries/uploads';
-        // $config['allowed_types']        = 'gif|jpg|png';
-        // $config['max_size']             = 100;
-        // $config['max_width']            = 1024;
-        // $config['max_height']           = 768;
-
-        $this->load->library('upload', $config);
         $this->load->helper('url');
 
+        
         $data = array(
-            'name'          => $this->input->post('name'),
-            'category'      => $this->input->post('category'),
-            'open_at'       => $this->input->post('open_at'),
-            'close_at'      => $this->input->post('close_at'),
-            'holiday'       => $this->input->post('holiday'),
-            'day_average'   => $this->input->post('day_average'),
-            'night_average' => $this->input->post('night_average'),
-            'url'           => $this->input->post('url'),
-            'address'       => $this->input->post('address'),
-            'tel'           => $this->input->post('tel'),
+            // 'name'          => $this->input->post('name'),
+            // 'category'      => $this->input->post('category'),
+            // 'open_at'       => $this->input->post('open_at'),
+            // 'close_at'      => $this->input->post('close_at'),
+            // 'holiday'       => $this->input->post('holiday'),
+            // 'day_average'   => $this->input->post('day_average'),
+            // 'night_average' => $this->input->post('night_average'),
+            // 'url'           => $this->input->post('url'),
+            // 'address'       => $this->input->post('address'),
+            // 'tel'           => $this->input->post('tel'),
             'img'           => $this->input->post('img')
         );
     
